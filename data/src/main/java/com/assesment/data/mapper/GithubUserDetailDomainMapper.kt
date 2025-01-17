@@ -1,7 +1,7 @@
 package com.assesment.data.mapper
 
 import com.assesment.data.model.GithubUserDetailModel
-import com.assesment.data.utils.Mapper
+import com.assesment.shared.utils.Mapper
 import com.assesment.domain.model.GithubUserDetail
 
 class GithubUserDetailDomainMapper: Mapper<GithubUserDetailModel, GithubUserDetail> {

@@ -1,6 +1,6 @@
 package com.assesment.domain.usecase
 
-import com.assesment.domain.utils.Resource
+import com.assesment.shared.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
