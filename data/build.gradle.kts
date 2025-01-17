@@ -38,5 +38,6 @@ dependencies {
     implementation(libs.bundles.coroutines)
     implementation(libs.bundles.networking)
     implementation(project(":domain"))
+    implementation(project(":shared"))
     implementation(libs.core.androidx.core.ktx)
 }

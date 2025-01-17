@@ -2,7 +2,7 @@ package com.assesment.domain.usecase
 
 import com.assesment.domain.model.GithubUser
 import com.assesment.domain.repository.HistoryGithubUserRepository
-import com.assesment.domain.utils.Resource
+import com.assesment.shared.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 data class GetHistorySearchUserParams(

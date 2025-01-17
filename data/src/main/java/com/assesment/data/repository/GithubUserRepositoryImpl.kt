@@ -7,7 +7,7 @@ import com.assesment.data.mapper.GithubUserDomainMapper
 import com.assesment.domain.model.GithubUser
 import com.assesment.domain.model.GithubUserDetail
 import com.assesment.domain.repository.GtihubUserRepository
-import com.assesment.domain.utils.Resource
+import com.assesment.shared.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

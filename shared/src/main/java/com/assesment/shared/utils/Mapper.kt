@@ -1,9 +1,9 @@
-package com.assesment.data.utils
+package com.assesment.shared.utils
 
 /**
- * Low: Low level model
- * High: High level model
- **/
+* Low: Low level model
+* High: High level model
+**/
 interface Mapper<Low, High> {
     fun from(i: Low?): High
 
