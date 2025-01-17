@@ -28,6 +28,8 @@ activity = "1.9.3"
 constraintlayout = "2.2.0"
 glide = "4.16.0"
 navigation-ui = "2.8.5"
+recyclerview = "1.4.0"
+swiperefreshlayout = "1.1.0"
 #endregion
 
 #region networking
@@ -64,6 +66,11 @@ ui-material = { group = "com.google.android.material", name = "material", versio
 ui-androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 ui-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 ui-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+ui-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+ui-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-ui" }
+ui-navigation-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui" }
+ui-navigation-runtime = { group = "androidx.navigation", name = "navigation-runtime", version.ref = "navigation-ui" }
+ui-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 #endregion
 
 #region testing
@@ -105,6 +112,11 @@ ui = [
     "ui-androidx-activity",
     "ui-androidx-constraintlayout",
     "ui-glide",
+    "ui-recyclerview",
+    "ui-navigation-fragment-ktx",
+    "ui-navigation-ktx",
+    "ui-swiperefreshlayout",
+    "ui-navigation-runtime"
 ]
 viewmodel = ["core-lifecycle-livedata", "core-lifecycle-viewmodel-android", "core-lifecycle-viewmodel-ktx"]
 networking = ["networking-retrofit", "networking-okhttp", "networking-retrofit-converter", "networking-retrofit-interceptor"]
