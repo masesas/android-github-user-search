@@ -1,7 +1,7 @@
 package com.assesment.githubuser.ui.detail
 
 import androidx.lifecycle.viewModelScope
-import com.assesment.domain.usecase.GetGithubUserDetail
+import com.assesment.domain.usecase.GetGithubUserDetailUseCase
 import com.assesment.domain.usecase.GetGithubUserDetailParams
 import com.assesment.githubuser.contract.SearchDetailContract
 import com.assesment.shared.utils.Resource
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class SearchDetailViewModel(
-    private val getGithubUserDetail: GetGithubUserDetail
+    private val getGithubUserDetailUseCase: GetGithubUserDetailUseCase
 ) : BaseViewModel<SearchDetailContract.Event, SearchDetailContract.State, SearchDetailContract.Effect>() {
     override fun createInitialState(): SearchDetailContract.State = SearchDetailContract.State(
         userDetailState = SearchDetailContract.SearchDetailState.Idle
@@ -26,7 +26,7 @@ class SearchDetailViewModel(
 
     private fun getUserDetail(username: String) {
         viewModelScope.launch {
-            getGithubUserDetail
+            getGithubUserDetailUseCase
                 .execute(GetGithubUserDetailParams(username = username))
                 .onStart { }
                 .collect {

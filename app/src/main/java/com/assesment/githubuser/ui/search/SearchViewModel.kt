@@ -5,7 +5,7 @@ import com.assesment.domain.model.GithubUser
 import com.assesment.domain.repository.GtihubUserRepository
 import com.assesment.domain.usecase.GetHistorySearchUserParams
 import com.assesment.domain.usecase.GetHistorySearchUserUseCase
-import com.assesment.domain.usecase.GetSearchGithubUser
+import com.assesment.domain.usecase.GetSearchGithubUserUseCase
 import com.assesment.domain.usecase.GetSearchGithubUserParams
 import com.assesment.githubuser.contract.SearchContract
 import com.assesment.shared.utils.Resource
@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class SearchViewModel(
     private val historyGithubUserRepository: GtihubUserRepository,
     private val getHistoryGithubUser: GetHistorySearchUserUseCase,
-    private val getSearchGithubUser: GetSearchGithubUser
+    private val getSearchGithubUserUseCase: GetSearchGithubUserUseCase
 ) : BaseViewModel<SearchContract.Event, SearchContract.State, SearchContract.Effect>() {
 
     private val _page: MutableStateFlow<Int> = MutableStateFlow(1)
@@ -54,7 +54,7 @@ class SearchViewModel(
         _page.value = page
 
         viewModelScope.launch {
-            getSearchGithubUser.run(GetSearchGithubUserParams(query = query, page = page))
+            getSearchGithubUserUseCase.run(GetSearchGithubUserParams(query = query, page = page))
                 .onStart { emit(Resource.Loading) }
                 .collect {
                     emitState(it, page)

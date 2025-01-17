@@ -6,9 +6,9 @@ import com.assesment.shared.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface HistoryGithubUserRepository {
-    suspend fun saveSearchUser(query: String, users: List<GithubUser>): Flow<Resource<Boolean>>
+    suspend fun saveSearchUser(query: String, users: List<GithubUser>): Resource<Boolean>
 
-    suspend fun saveUserDetail(user: GithubUserDetail): Flow<Resource<Boolean>>
+    suspend fun saveUserDetail(user: GithubUserDetail): Resource<Boolean>
 
     suspend fun getHistorySearchQuery(): Flow<Resource<List<String>>>
 

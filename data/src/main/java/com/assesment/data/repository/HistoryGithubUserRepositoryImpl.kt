@@ -18,26 +18,22 @@ class HistoryGithubUserRepositoryImpl(
     override suspend fun saveSearchUser(
         query: String,
         users: List<GithubUser>
-    ): Flow<Resource<Boolean>> = flow {
-        try {
-            localDataSource.cachedUsers(query, userListMapper.toList(users))
-            emit(Resource.Success(true))
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emit(Resource.Success(false))
-        }
+    ): Resource<Boolean> = try {
+        localDataSource.cachedUsers(query, userListMapper.toList(users))
+        Resource.Success(true)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Resource.Success(false)
     }
 
     override suspend fun saveUserDetail(
         user: GithubUserDetail
-    ): Flow<Resource<Boolean>> = flow {
-        try {
-            localDataSource.cachedUserDetail(user.username, userDetailMapper.to(user))
-            emit(Resource.Success(true))
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emit(Resource.Success(false))
-        }
+    ): Resource<Boolean> = try {
+        localDataSource.cachedUserDetail(user.username, userDetailMapper.to(user))
+        Resource.Success(true)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Resource.Success(false)
     }
 
     override suspend fun getHistorySearchQuery(): Flow<Resource<List<String>>> = flow {
