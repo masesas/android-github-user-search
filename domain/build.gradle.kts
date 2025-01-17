@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.assesment.domain"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -24,20 +24,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.java.get())
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.toVersion(libs.versions.java.get()).toString()
     }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(project.dependencies.platform(libs.core.koin.bom))
+    implementation(libs.bundles.koin)
+    implementation(libs.bundles.coroutines)
+    implementation(libs.core.androidx.core.ktx)
 }
