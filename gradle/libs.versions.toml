@@ -19,6 +19,10 @@ gson = "2.10.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlin-test-junit = "1.9.22"
+kotlin-test-coroutines = "1.8.1"
+io-mockk = "1.13.12"
+runner = "1.6.2"
 #endregion
 
 #region ui
@@ -79,6 +83,10 @@ testing-androidx-junit = { group = "androidx.test.ext", name = "junit", version.
 testing-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 testing-koin = { group = "io.insert-koin", name = "koin-test", version.ref = "koin-bom" }
 testing-koin-junit = { group = "io.insert-koin", name = "koin-test-junit5", version.ref = "koin-bom" }
+testing-kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin-test-junit" }
+testing-kotlin-test-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-test-coroutines" }
+testing-io-mock = { group = "io.mockk", name = "mockk", version.ref = "io-mockk" }
+testing-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 #endregion
 
 #region networking
@@ -121,3 +129,13 @@ ui = [
 viewmodel = ["core-lifecycle-livedata", "core-lifecycle-viewmodel-android", "core-lifecycle-viewmodel-ktx"]
 networking = ["networking-retrofit", "networking-okhttp", "networking-retrofit-converter", "networking-retrofit-interceptor"]
 caching = ["caching-room-runtime", "caching-room-ktx"]
+common-testing = [
+    "testing-junit",
+    "testing-koin",
+    "testing-koin-junit",
+    #"testing-kotlin-test-junit",
+    "testing-kotlin-test-coroutines",
+    "testing-io-mock",
+    "testing-runner"
+]
+android-testing = ["testing-androidx-junit", "testing-androidx-espresso-core"]

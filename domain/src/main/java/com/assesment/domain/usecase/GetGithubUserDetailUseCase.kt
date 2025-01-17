@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 data class GetGithubUserDetailParams(val username: String)
 
-class GetGithubUserDetail(
+class GetGithubUserDetailUseCase(
     private val repository: GtihubUserRepository
 ) : UseCaseWithParams<GetGithubUserDetailParams, GithubUserDetail>() {
 

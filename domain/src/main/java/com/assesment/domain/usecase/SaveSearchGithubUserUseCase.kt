@@ -3,7 +3,6 @@ package com.assesment.domain.usecase
 import com.assesment.domain.model.GithubUser
 import com.assesment.domain.repository.HistoryGithubUserRepository
 import com.assesment.shared.utils.Resource
-import kotlinx.coroutines.flow.Flow
 
 data class SaveSearchGithubUserParams(
     val query: String,
@@ -12,9 +11,8 @@ data class SaveSearchGithubUserParams(
 
 class SaveSearchGithubUserUseCase(
     private val repository: HistoryGithubUserRepository
-) : UseCaseWithParams<SaveSearchGithubUserParams, Boolean>() {
-
-    override suspend fun run(params: SaveSearchGithubUserParams): Flow<Resource<Boolean>> {
+) {
+    suspend fun run(params: SaveSearchGithubUserParams): Resource<Boolean> {
         return repository.saveSearchUser(params.query, params.users)
     }
 }

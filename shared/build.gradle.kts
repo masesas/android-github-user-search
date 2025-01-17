@@ -36,10 +36,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.core.androidx.core.ktx)
-    testImplementation(libs.testing.junit)
-    androidTestImplementation(libs.testing.androidx.junit)
-    androidTestImplementation(libs.testing.androidx.espresso.core)
+    testImplementation(libs.bundles.common.testing)
 
     implementation(libs.core.androidx.core.ktx)
     implementation(libs.bundles.coroutines)
