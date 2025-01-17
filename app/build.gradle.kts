@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.assesment.githubuser"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.assesment.githubuser"
-        minSdk = 24
-        targetSdk = 34
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.compileSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -27,22 +27,27 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.java.get())
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.toVersion(libs.versions.java.get()).toString()
     }
 }
 
 dependencies {
+    implementation(libs.core.androidx.core.ktx)
+    testImplementation(libs.testing.junit)
+    androidTestImplementation(libs.testing.androidx.junit)
+    androidTestImplementation(libs.testing.androidx.espresso.core)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.bundles.ui)
+    implementation(project.dependencies.platform(libs.core.koin.bom))
+    implementation(libs.bundles.koin)
+
+    implementation(libs.core.work.manager)
+    implementation(libs.core.koin.worker)
+    runtimeOnly(libs.core.koin.viewmodel)
+    implementation(libs.bundles.viewmodel)
+    implementation(libs.core.gson)
 }

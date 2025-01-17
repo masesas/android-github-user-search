@@ -1,27 +1,84 @@
 [versions]
+#region core
+java = "11"
+compileSdk = "35"
+minSdk = "24"
 agp = "8.7.3"
-kotlin = "1.9.24"
+kotlin = "2.0.21"
 coreKtx = "1.15.0"
+lifecycle = "2.8.7"
+coroutines = "1.9.0"
+koin-bom = "3.5.0"
+koin-viewmodel = "4.0.0"
+work-manager = "2.10.0"
+ksp = "2.0.21-1.0.27"
+gson = "2.10.1"
+#endregion
+
+#region testing
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+#endregion
+
+#region ui
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.10.0"
+activity = "1.9.3"
 constraintlayout = "2.2.0"
+glide = "4.16.0"
+navigation-ui = "2.8.5"
+#endregion
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+#region core
+core-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+core-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+core-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+core-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+core-koin-core = { module = "io.insert-koin:koin-core" }
+core-koin-android = { module = "io.insert-koin:koin-android" }
+core-koin-viewmodel = { module = "io.insert-koin:koin-core-viewmodel", version.ref = "koin-viewmodel" }
+core-koin-worker = { module = "io.insert-koin:koin-androidx-workmanager" }
+core-work-manager = { module = "androidx.work:work-runtime-ktx", version.ref = "work-manager" }
+core-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+core-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+core-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycle" }
+core-ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
+core-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+#endregion
+
+#region ui
+ui-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+ui-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+ui-androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+ui-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+ui-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+#endregion
+
+#region testing
+testing-junit = { group = "junit", name = "junit", version.ref = "junit" }
+testing-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+testing-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+testing-koin = { group = "io.insert-koin", name = "koin-test", version.ref = "koin-bom" }
+testing-koin-junit = { group = "io.insert-koin", name = "koin-test-junit5", version.ref = "koin-bom" }
+#endregion
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+navigation-safe-args = { id = "androidx.navigation.safeargs", version.ref = "navigation-ui" }
 
+[bundles]
+koin = ["core-koin-core", "core-koin-android"]
+coroutines = ["core-coroutines-core", "core-coroutines-android"]
+ui = [
+    "ui-androidx-appcompat",
+    "ui-material",
+    "ui-androidx-activity",
+    "ui-androidx-constraintlayout",
+    "ui-glide",
+]
+viewmodel = ["core-lifecycle-livedata", "core-lifecycle-viewmodel-android", "core-lifecycle-viewmodel-ktx"]
