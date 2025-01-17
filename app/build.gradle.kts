@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.toVersion(libs.versions.java.get()).toString()
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -50,4 +53,10 @@ dependencies {
     runtimeOnly(libs.core.koin.viewmodel)
     implementation(libs.bundles.viewmodel)
     implementation(libs.core.gson)
+
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":remote"))
+    implementation(project(":local"))
+    implementation(project(":shared"))
 }
