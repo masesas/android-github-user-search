@@ -37,6 +37,11 @@ android {
 
 dependencies {
     implementation(libs.core.androidx.core.ktx)
+    testImplementation(libs.testing.junit)
+    androidTestImplementation(libs.testing.androidx.junit)
+    androidTestImplementation(libs.testing.androidx.espresso.core)
+
+    implementation(libs.core.androidx.core.ktx)
     implementation(libs.bundles.coroutines)
     implementation(libs.ui.androidx.appcompat)
     implementation(libs.ui.recyclerview)

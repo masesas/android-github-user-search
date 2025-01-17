@@ -33,6 +33,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.core.androidx.core.ktx)
+    testImplementation(libs.testing.junit)
+    androidTestImplementation(libs.testing.androidx.junit)
+    androidTestImplementation(libs.testing.androidx.espresso.core)
+
     releaseImplementation(libs.networking.chucker.release)
     debugImplementation(libs.networking.chucker.debug)
 

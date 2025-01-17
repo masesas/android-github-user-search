@@ -33,6 +33,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.core.androidx.core.ktx)
+    testImplementation(libs.testing.junit)
+    androidTestImplementation(libs.testing.androidx.junit)
+    androidTestImplementation(libs.testing.androidx.espresso.core)
+
     implementation(project.dependencies.platform(libs.core.koin.bom))
     implementation(libs.bundles.koin)
     implementation(libs.bundles.coroutines)
