@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.assesment.remote"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -33,11 +33,13 @@ android {
 }
 
 dependencies {
+    releaseImplementation(libs.networking.chucker.release)
+    debugImplementation(libs.networking.chucker.debug)
 
+    implementation(project.dependencies.platform(libs.core.koin.bom))
+    implementation(libs.bundles.koin)
+    implementation(libs.bundles.networking)
     implementation(libs.core.androidx.core.ktx)
-    implementation(libs.ui.androidx.appcompat)
-    implementation(libs.ui.material)
-    testImplementation(libs.testing.junit)
-    androidTestImplementation(libs.testing.androidx.junit)
-    androidTestImplementation(libs.testing.androidx.espresso.core)
+    implementation(project(":shared"))
+    implementation(project(":data"))
 }
